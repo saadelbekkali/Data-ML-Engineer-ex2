@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  spark-submit:
+    image: bitnami/spark:3.5.0
+    container_name: lastfm-session-analysis
+    environment:
+      - INPUT_PATH=/data/userid-timestamp-artid-artname-traid-traname.tsv
+      - OUTPUT_PATH=/output/output-top10-songs
+    volumes:
+      - ./data:/data
+      - ./output:/output
+      - ./target/scala-2.12/lastfm-session-analysis.jar:/app/lastfm-session-analysis.jar:ro
+    command: >
+      spark-submit
+        --master local[*]
+        --class Main
+        --conf spark.sql.shuffle.partitions=8
+        --conf spark.driver.memory=2g
+        /app/lastfm-session-analysis.jar
