@@ -1,0 +1,22 @@
+# Build output
+target/
+project/target/
+project/project/
+
+# Data & output (large/generated files)
+data/
+output/
+
+# IDE & editor
+.vscode/
+.idea/
+*.iml
+
+# Metals (Scala LSP)
+.metals/
+.scala-build/
+.bsp/
+
+# macOS
+.DS_Store
+**/.DS_Store
