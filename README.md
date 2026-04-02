@@ -32,7 +32,7 @@ Spark job written in Scala that finds the **top 10 most-played songs** within th
 ## Setup
 
 1. Download the [Last.fm 1K dataset](http://ocelma.net/MusicRecommendationDataset/lastfm-1K.html)
-2. Place the `.tsv` file inside `data/`
+2. Place the `userid-timestamp-artid-artname-traid-traname.tsv` file inside `data/`
 
 ## How to run
 

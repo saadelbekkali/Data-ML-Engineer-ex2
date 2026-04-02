@@ -16,6 +16,7 @@ output/
 .metals/
 .scala-build/
 .bsp/
+.bloop/
 
 # macOS
 .DS_Store

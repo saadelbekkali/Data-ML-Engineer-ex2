@@ -42,6 +42,7 @@ object Main {
       )
       .withColumn("session_id", concat_ws("_", col("user_id"), sum("new_session").over(windowUserTimestamp)))
      .drop("prev_ts", "new_session")
+     .cache()
 
 
     // Top 50 sessions by track count
@@ -60,6 +61,7 @@ object Main {
       .orderBy(col("count").desc)
       .limit(10)
 
+    println("Top 10 played in the top 50 longest sessions:")
     top10.show(truncate = false)
 
     top10.coalesce(1)
@@ -68,6 +70,7 @@ object Main {
       .option("header", "true")
       .csv(outputPath)
       
+    withSessions.unpersist()  
 
     spark.stop()
   }

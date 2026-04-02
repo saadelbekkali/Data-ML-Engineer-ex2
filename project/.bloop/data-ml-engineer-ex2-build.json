@@ -221,7 +221,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/Users/saadelbekkali/Library/Java/JavaVirtualMachines/openjdk-19.0.2/Contents/Home",
+                "home": "/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home",
                 "options": [
                     "-Duser.dir=/Users/saadelbekkali/Desktop/Proyecto BME/Data-ML-Engineer-ex2/project"
                 ]
@@ -230,7 +230,7 @@
                 
             ],
             "runtimeConfig": {
-                "home": "/Users/saadelbekkali/Library/Java/JavaVirtualMachines/openjdk-19.0.2/Contents/Home",
+                "home": "/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home",
                 "options": [
                     "-Duser.dir=/Users/saadelbekkali/Desktop/Proyecto BME/Data-ML-Engineer-ex2/project"
                 ]
