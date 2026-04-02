@@ -28,21 +28,23 @@ object Main {
       .filter(col("user_id").isNotNull && col("timestamp").isNotNull && col("track_name").isNotNull)
       .select("user_id", "timestamp", "artist_name", "track_name") 
 
-
     // Assign session IDs
     // A new session starts when the gap from the previous song is > 20 minutes
     val windowUserTimestamp = Window.partitionBy("user_id").orderBy("timestamp")
 
-    val withSessions = plays
+    val withGap = plays
       .withColumn("prev_ts", lag("timestamp", 1).over(windowUserTimestamp))
+      .withColumn("gap_seconds", unix_timestamp(col("timestamp"), "yyyy-MM-dd'T'HH:mm:ss'Z'") - unix_timestamp(col("prev_ts"), "yyyy-MM-dd'T'HH:mm:ss'Z'"))
       .withColumn(
         "new_session",
-        when(col("prev_ts").isNull || unix_timestamp(col("timestamp")) - unix_timestamp(col("prev_ts")) > 20 * 60, 1)
-          .otherwise(0)
+        when(col("prev_ts").isNull || col("gap_seconds") > 20 * 60, 1).otherwise(0)
       )
+
+
+    val withSessions = withGap
       .withColumn("session_id", concat_ws("_", col("user_id"), sum("new_session").over(windowUserTimestamp)))
-     .drop("prev_ts", "new_session")
-     .cache()
+      .drop("prev_ts", "gap_seconds", "new_session")
+      .cache()
 
 
     // Top 50 sessions by track count

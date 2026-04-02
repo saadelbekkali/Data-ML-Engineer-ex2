@@ -15,5 +15,6 @@ assembly / assemblyMergeStrategy := {
   case _                             => MergeStrategy.first
 }
 
-assembly / mainClass       := Some("Main")
-assembly / assemblyJarName := "lastfm-session-analysis.jar"
+assembly / mainClass        := Some("Main")
+assembly / assemblyJarName  := "lastfm-session-analysis.jar"
+assembly / assemblyOutputPath := baseDirectory.value / "target" / "scala-2.12" / "lastfm-session-analysis.jar"
