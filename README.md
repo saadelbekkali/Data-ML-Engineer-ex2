@@ -62,7 +62,7 @@ Tab-separated file with no header, columns in order:
 | Column          | Type   |
 |-----------------|--------|
 | `user_id`       | String |
-| `timestamp`     | String (`yyyy-MM-dd'T'HH:mm:ss'Z'`) |
+| `timestamp`     | Timestamp (`yyyy-MM-dd'T'HH:mm:ss'Z'`) |
 | `artist_mb_id`  | String |
 | `artist_name`   | String |
 | `track_mb_id`   | String |
